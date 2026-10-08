@@ -1,0 +1,171 @@
+/* ==========================================
+   VARIABLES Y CONFIGURACIÓN GENERAL
+   ========================================== */
+:root {
+    --primary-color: #e63946;      /* Rojo pizza apetitoso */
+    --secondary-color: #f4a261;    /* Naranja cálido */
+    --accent-color: #2a9d8f;       /* Verde para detalles */
+    --bg-color: #fff9f5;           /* Fondo crema suave */
+    --card-bg: #ffffff;            /* Fondo de la tarjeta/formulario */
+    --text-color: #2d2d2d;         /* Texto principal */
+    --border-color: #e0e0e0;       /* Bordes sutiles */
+    --shadow: 0 10px 30px rgba(230, 57, 70, 0.12); /* Sombra elegante */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* ==========================================
+   TÍTULO Y ENCABEZADO
+   ========================================== */
+h1 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Agrega un icono de pizza antes del título */
+h1::before {
+    content: '🍕';
+    font-size: 2.5rem;
+}
+
+/* ==========================================
+   CONTENEDOR DEL FORMULARIO (TARJETA)
+   ========================================== */
+form {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 480px;
+    padding: 35px 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(244, 162, 97, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ocultar los br innecesarios manteniendo un espaciado limpio con CSS */
+form br {
+    display: none;
+}
+
+/* ==========================================
+   ESTILOS DE LABELS E INPUTS
+   ========================================== */
+label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #444;
+    margin-top: 15px;
+    margin-bottom: 6px;
+}
+
+/* Encabezado especial para ingredientes extra */
+label[for="maiz"] {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 2px dashed var(--border-color);
+}
+
+select, input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    background-color: #fafafa;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+select:focus, input[type="number"]:focus {
+    border-color: var(--secondary-color);
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(244, 162, 97, 0.4);
+}
+
+/* ==========================================
+   BOTÓN DE CÁLCULO
+   ========================================== */
+input[type="button"] {
+    margin-top: 30px;
+    background: linear-gradient(135deg, var(--primary-color), #d62828);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 6px 18px rgba(230, 57, 70, 0.3);
+}
+
+input[type="button"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(230, 57, 70, 0.4);
+}
+
+input[type="button"]:active {
+    transform: translateY(0);
+}
+
+/* ==========================================
+   RESULTADO TOTAL
+   ========================================== */
+#total {
+    margin-top: 25px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1b4332;
+    background-color: #e8f5e9;
+    padding: 15px 20px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #c8e6c9;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    display: empty; /* Oculta si está vacío */
+}
+
+/* Cuando el texto del total no esté vacío, animación suave */
+#total:not(:empty) {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
